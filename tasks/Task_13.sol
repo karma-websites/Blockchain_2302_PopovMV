@@ -2,37 +2,33 @@
 pragma solidity ^0.8.0;
 
 contract ExampleUsage {
-    // 1) Пример использования assert
+    // 1) Пример использования assert:
+    // Проверка должна основываться на том, что переданное значение НЕ равно 0
     function assertExample(uint256 _value) public pure {
-        // Проверка должна основываться на том, что переданное значение НЕ равно 0
         assert(_value != 0);
     }
 
-    // 2) Пример использования revert
+    // 2) Пример использования revert:
+    // При ложном переданном значении выполнять revert
     function revertExample(bool _condition) public pure {
-        // При ложном переданном значении выполнять revert
-        if (!_condition) {
+        if (_condition == false) {
             revert("Invalid condition");
         }
     }
 
-    // 3) Пример использования if-else
+    // 3) Пример использования if-else:
+    // else должен возвращать "Value is 10 or less"
     function ifElseExample(uint256 _value) public pure returns (string memory) {
-        // Закончить оператор if конструкцией else
         if (_value > 10) {
             return "Value is greater than 10";
         } else {
-            // В случае else нужно возвращать "Value is 10 or less"
             return "Value is 10 or less";
         }
     }
 
-    // 4) Пример использования else if
+    // 4) Пример использования else if:
+    // Проверить и исправить логические условия
     function elseIfExample(uint256 _value) public pure returns (string memory) {
-        // Проверить и исправить логические условия:
-        // - >10
-        // - ==10
-        // - иначе <10
         if (_value > 10) {
             return "Value is greater than 10";
         } else if (_value == 10) {
@@ -42,7 +38,7 @@ contract ExampleUsage {
         }
     }
 
-    // 5) Переписать функцию ternaryExample с помощью конструкции if-else
+    // 5) Переписать ternaryExample с помощью if-else
     function ternaryExample(uint256 _value) public pure returns (string memory) {
         if (_value > 10) {
             return "Value is greater than 10";

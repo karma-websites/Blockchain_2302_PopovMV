@@ -1,55 +1,53 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-
 contract ExampleUsage {
-   // Пример использования assert
-   function assertExample(uint256 _value) public pure {
-       // Исправление: проверяем, что _value не равен нулю
-       assert(_value != 0);
-   }
+    // 1) Пример использования assert
+    function assertExample(uint256 _value) public pure {
+        // Проверка должна основываться на том, что переданное значение НЕ равно 0
+        assert(_value != 0);
+    }
 
+    // 2) Пример использования revert
+    function revertExample(bool _condition) public pure {
+        // При ложном переданном значении выполнять revert
+        if (!_condition) {
+            revert("Invalid condition");
+        }
+    }
 
-   // Пример использования revert
-   function revertExample(bool _condition) public pure {
-       // Исправление: добавляем revert с сообщением "Invalid condition" если _condition == false
-       if (!_condition) {
-           revert("Invalid condition");
-       }
-   }
+    // 3) Пример использования if-else
+    function ifElseExample(uint256 _value) public pure returns (string memory) {
+        // Закончить оператор if конструкцией else
+        if (_value > 10) {
+            return "Value is greater than 10";
+        } else {
+            // В случае else нужно возвращать "Value is 10 or less"
+            return "Value is 10 or less";
+        }
+    }
 
+    // 4) Пример использования else if
+    function elseIfExample(uint256 _value) public pure returns (string memory) {
+        // Проверить и исправить логические условия:
+        // - >10
+        // - ==10
+        // - иначе <10
+        if (_value > 10) {
+            return "Value is greater than 10";
+        } else if (_value == 10) {
+            return "Value is exactly 10";
+        } else {
+            return "Value is less than 10";
+        }
+    }
 
-   // Пример использования if-else
-   function ifElseExample(uint256 _value) public pure returns (string memory) {
-       // Исправление: добавляем ветку else
-       if (_value > 10) {
-           return "Value is greater than 10";
-       } else {
-           return "Value is 10 or less";
-       }
-   }
-
-
-   // Пример использования else if
-   function elseIfExample(uint256 _value) public pure returns (string memory) {
-       // Исправление: заменяем = на ==
-       if (_value > 10) {
-           return "Value is greater than 10";
-       } else if (_value == 10) {
-           return "Value is exactly 10";
-       } else {
-           return "Value is less than 10";
-       }
-   }
-
-
-   // Пример использования тернарного оператора
-   function ternaryExample(uint256 _value) public pure returns (string memory) {
-       // Исправление: переписываем с использованием if-else
-       if (_value > 10) {
-           return "Value is greater than 10";
-       } else {
-           return "Value is 10 or less";
-       }
-   }
+    // 5) Переписать функцию ternaryExample с помощью конструкции if-else
+    function ternaryExample(uint256 _value) public pure returns (string memory) {
+        if (_value > 10) {
+            return "Value is greater than 10";
+        } else {
+            return "Value is 10 or less";
+        }
+    }
 }

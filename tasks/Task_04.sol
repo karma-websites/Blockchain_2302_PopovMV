@@ -11,4 +11,7 @@ contract Task_04 {
    }
 
 
+   function getBalance(address _addr) external view returns (uint256) {
+       return balances[_addr];
+   }
 }

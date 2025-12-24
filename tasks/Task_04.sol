@@ -14,4 +14,17 @@ contract Task_04 {
    function getBalance(address _addr) external view returns (uint256) {
        return balances[_addr];
    }
+
+
+   function generateFibo(uint256 n) external pure returns (uint256) {
+      uint256 a = 0;
+      uint256 b = 1;
+      uint256 next;
+      do {
+         next = a + b; // следующее число
+         a = b;
+         b = next;
+      } while (next <= n);
+      return next;
+   }
 }

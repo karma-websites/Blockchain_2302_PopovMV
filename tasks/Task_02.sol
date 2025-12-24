@@ -11,6 +11,7 @@ contract Task_02 {
        dynamicArray.push(_value); // Добавление элемента в динамический массив
    }
 
+
    function sumArray() external view returns (uint256 sum) {
        for (uint256 i = 0; i < dynamicArray.length; i++) {
            sum += dynamicArray[i];

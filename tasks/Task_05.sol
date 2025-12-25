@@ -11,6 +11,7 @@ contract Task_05 {
 
 
    Status public currentStatus; // Переменная типа Status
+   int256[] public celsiusTemperatures;
 
 
    function setStatus(Status _status) external {
@@ -23,11 +24,17 @@ contract Task_05 {
    }
 
 
-   function toFahrenheit(int256[] calldata celsiusArr) external pure returns (int256[] memory) {
-      int256[] memory fahrenheitArr = new int256[](celsiusArr.length);
-      for (uint256 i = 0; i < celsiusArr.length; i++) {
-         fahrenheitArr[i] = (celsiusArr[i] * 9) / 5 + 32;
+   function addCelsiusTemperature(int256 _celsius) external {
+      celsiusTemperatures.push(_celsius);
+   }
+
+   function getAllFahrenheitTemperatures() external view returns (int256[] memory) {
+      int256[] memory result = new int256[](celsiusTemperatures.length);
+
+      for (uint256 i = 0; i < celsiusTemperatures.length; i++) {
+         result[i] = (celsiusTemperatures[i] * 9) / 5 + 32;
       }
-      return fahrenheitArr;
+
+      return result;
    }
 }
